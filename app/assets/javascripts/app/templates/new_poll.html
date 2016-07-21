@@ -11,14 +11,13 @@
 
   <div ng-repeat="response in vm.newPoll.poll.responses_attributes">
     <label>Response {{$index + 1}}:</label>
-    <input type="text" name="response" ng-model="response.text" integer><br>
+    <input type="text" name="response" ng-model="response.text"><br>
   </div>
 
-
-  <div ng-if="vm.currentUser">
-    <h2>Poll Options</h2>
+<h2>Poll Options</h2>
     <label>Allow multiple responses?:</label>
     <input type="checkbox" name="poll" ng-model="vm.newPoll.poll.select_multiple"><br>
+  <div ng-if="vm.currentUser">
     <label>Publish this Poll?:</label>
     <input type="checkbox" name="poll" ng-model="vm.newPoll.poll.published"><br>
     <label>Make Results Public?:</label>
