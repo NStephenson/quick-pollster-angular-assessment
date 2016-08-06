@@ -83,10 +83,13 @@ class PollsController < ApplicationController
   end
 
   def destroy
-    @poll.votes.each { |vote| vote.delete }
-    @poll.responses.each { |response| response.delete }
-    @poll.delete
-    redirect_to root_path
+    if @poll.user.id == current_user.id
+      @poll.votes.each { |vote| vote.delete }
+      @poll.responses.each { |response| response.delete }
+      @poll.delete
+    else
+      head :unauthorized
+    end
   end
 
 
