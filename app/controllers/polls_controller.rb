@@ -5,14 +5,10 @@ class PollsController < ApplicationController
   def index
     if params[:user_id]
       @polls = User.find(params[:user_id]).polls.published_polls
-      respond_to do |format|
-        format.json {render json: @polls}
-      end
+      render json: @polls
     else
       @polls = Poll.published_polls
-      respond_to do |format|
-        format.json {render json: @polls}
-      end
+      render json: @polls
     end
   end
 
@@ -33,40 +29,23 @@ class PollsController < ApplicationController
 
   def results
     @poll = Poll.find(params[:id])
-    respond_to do |format|
-      format.html {render :results}
-      format.json {render json: @poll}
-    end 
+    render json: @poll
   end
-
-  # def new
-  #   @poll = Poll.new
-  #   6.times { @poll.responses.build }
-  # end
 
   def create
     @poll = Poll.new(new_poll_params)
     @poll.user = current_user if signed_in?
     if @poll.save
-      flash[:notice] = "New poll successfully created!"
       render json: @poll, status: 201
     else
       render body: "error"
     end
   end
 
-  def edit
-    if current_user != @poll.user 
-      redirect_to poll_path(@poll)
-    end
-  end
-
   def update
     @poll.update(edit_poll_params)
     if @poll.save
-      respond_to do |format|
-        format.json {render json: @polls}
-      end
+      render json: @polls
     else
       flash[:error] = "Somehow, you managed to fuck up. Congrats."
       render action: 'edit'
