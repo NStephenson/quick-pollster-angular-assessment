@@ -63,6 +63,7 @@ app.directive('qpPollCard', function(){
       ctrl.submitResponse = function(selected){
         ctrl.applyResponse(selected);
         PollsService.submitResults(ctrl.poll.id, selected).then(function(a,b,c){
+          debugger;
           ctrl.isAvailable = false;
         });
       }  
