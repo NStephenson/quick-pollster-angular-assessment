@@ -4,6 +4,8 @@
   <option ng-repeat="option in vm.filterOptions" value="{{option}}">{{option}}</option>
 </select>
 
+<input type="text" ng-model="vm.search" ng-change="vm.refilter()">
+
 <div ng-repeat="poll in vm.filteredPolls track by poll.id">
   <qp-poll-card poll="poll"></qp-poll-card>
 </div>
