@@ -2,7 +2,7 @@ app.directive('qpPollResults', function(){
 
   return {
     restrict: 'E',
-    templateUrl: 'app/templates/poll_display.html',
+    templateUrl: 'app/templates/polls/poll_display.html',
     scope: {},
     controller: function(Auth){
       var ctrl = this;

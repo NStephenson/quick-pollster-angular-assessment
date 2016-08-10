@@ -14,7 +14,7 @@ app.config(function($stateProvider, $urlRouterProvider){
     .state('welcome.newPoll', {
       url: 'newpoll',
       controller: 'PollsController as vm',
-      templateUrl: 'app/templates/new_poll.html',
+      templateUrl: 'app/templates/polls/new_poll.html',
       resolve: {
         polls: function($state){
           return {};
@@ -34,7 +34,7 @@ app.config(function($stateProvider, $urlRouterProvider){
     .state('polls', {
       url: '/polls',
       controller: 'PollsController as vm',
-      templateUrl: 'app/templates/polls-index.html',
+      templateUrl: 'app/templates/polls/polls_index.html',
       data: { authRequired: true },
       resolve: {
         polls: function(PollsService){
@@ -43,7 +43,7 @@ app.config(function($stateProvider, $urlRouterProvider){
       }
     })
     // .state('myPolls', {
-    //   url: '/mypolls',
+    //   url: '/my_polls',
     //   controller: 'UsersController as vm',
     //   templateUrl: 'app/templates/mypolls.html',
     //   data: { authRequired: true },
@@ -56,7 +56,7 @@ app.config(function($stateProvider, $urlRouterProvider){
     .state('poll', {
       url: '/polls/:id',
       controller: 'PollsController as vm',
-      templateUrl: 'app/templates/poll_show.html',
+      templateUrl: 'app/templates/polls/poll_show.html',
       resolve: {
         polls: function(PollsService, $stateParams){
           return PollsService.getPoll($stateParams.id);
@@ -83,12 +83,12 @@ app.config(function($stateProvider, $urlRouterProvider){
           return {};
         }
       },
-      templateUrl: 'app/templates/new_poll.html'
+      templateUrl: 'app/templates/polls/new_poll.html'
     })
     .state('user', {
       url: '/user/:id',
       controller: 'UsersController as vm',
-      templateUrl: 'app/templates/user.html',
+      templateUrl: 'app/templates/users/user.html',
       data: { authRequired: true },
       resolve: {
         user: function(UserService, $stateParams){

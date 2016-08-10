@@ -1,7 +1,7 @@
 app.directive('qpPollCard', function(){
   return {
     restrict: 'E',
-    templateUrl: 'app/templates/poll-card.html',
+    templateUrl: 'app/templates/polls/poll_card.html',
     scope: {},
     controller: function(PollsService, Auth, $scope){
       var ctrl = this;
