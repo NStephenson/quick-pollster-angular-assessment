@@ -73,7 +73,7 @@ class PollsController < ApplicationController
         response.selected += 1
         response.save
         if signed_in?
-          current_user.responses << response 
+          current_user.responses << response
         else
           #add cookie
         end 
@@ -87,6 +87,7 @@ class PollsController < ApplicationController
       @poll.votes.each { |vote| vote.delete }
       @poll.responses.each { |response| response.delete }
       @poll.delete
+      head 204
     else
       head :unauthorized
     end
