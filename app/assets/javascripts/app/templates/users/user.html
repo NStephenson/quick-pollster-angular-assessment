@@ -9,3 +9,8 @@
 
 
 <h2>Public Votes</h2>
+<ul>
+  <div ng-repeat="vote in vm.user.votes">
+    <li>{{vote.poll.question}} <br> {{vm.user.username}} responded with {{vote.response.text}}</li>
+  </div>
+</ul>
