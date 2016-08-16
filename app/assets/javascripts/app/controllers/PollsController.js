@@ -15,9 +15,10 @@ app.controller('PollsController', function PollsController(polls, $filter, Auth,
 
 
   ctrl.refilter = function() {
-    var test = $filter('filterPollByResponseStatus')(ctrl.polls, ctrl.currentUser, ctrl.setting);
-    ctrl.filteredPolls = $filter('filter')(test, ctrl.search);
+    var statusFilteredPolls = $filter('filterPollByResponseStatus')(ctrl.polls, ctrl.currentUser, ctrl.setting);
+    ctrl.filteredPolls = $filter('filter')(statusFilteredPolls, ctrl.search);
   }
+
 
   ctrl.refilter();
 
