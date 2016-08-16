@@ -18,10 +18,10 @@
 </form>
 <br>
 
-<div ng-if="!vm.isAvailable || !vm.poll.open">
+<div ng-if="vm.unavailable || !vm.poll.open">
   <qp-poll-results poll="vm.poll"></qp-poll-results>
 </div>
 
-<div ng-if="vm.isAvailable && vm.poll.open">
+<div ng-if="!vm.unavailable && vm.poll.open">
   <qp-poll-form poll="vm.poll"></qp-poll-form>
 </div>
