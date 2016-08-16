@@ -55,10 +55,10 @@ app.config(function($stateProvider, $urlRouterProvider){
     // })
     .state('poll', {
       url: '/polls/:id',
-      controller: 'PollsController as vm',
+      controller: 'PollController as vm',
       templateUrl: 'app/templates/polls/poll_show.html',
       resolve: {
-        polls: function(PollsService, $stateParams){
+        poll: function(PollsService, $stateParams){
           return PollsService.getPoll($stateParams.id);
         }
       }
@@ -96,6 +96,16 @@ app.config(function($stateProvider, $urlRouterProvider){
         }
       }
     });
+    // .state('user.all', {
+    //   url: '/all',
+    //   controller: 'UsersController as vm',
+    //   templateUrl: 'app/templates/polls/new_poll.html',
+    //   resolve: {
+    //     polls: function($state){
+    //       return {};
+    //     }
+    //   }
+    // });
 
     $urlRouterProvider.otherwise('/');
   });
