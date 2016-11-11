@@ -1,7 +1,0 @@
-<h1><%= @survey.name %></h1>
-
-<ol>
-  <% @survey.polls.each do |poll| %>
-    <li><%= render partial: "polls/poll_results", locals: {poll: poll} %>
-  <% end %>
-</ol>

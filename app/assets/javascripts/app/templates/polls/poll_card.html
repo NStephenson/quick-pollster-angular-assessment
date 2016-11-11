@@ -1,27 +1,29 @@
-<h2> <a ui-sref="poll({id: vm.poll.id})">{{vm.poll.question}}</a></h2>
-<p ng-if="vm.poll.user"> by <a ui-sref="user({id: vm.poll.user.id})">{{vm.poll.user.username}}</a></p>
+<div class="col-md-4">
+  <h2> <a ui-sref="poll({id: vm.poll.id})">{{vm.poll.question}}</a></h2>
+  <p ng-if="vm.poll.user"> by <a ui-sref="user({id: vm.poll.user.id})">{{vm.poll.user.username}}</a></p>
 
-<div ng-if="vm.currentUser && vm.currentUser.id === vm.poll.user.id">
-  <a href="" ng-click="vm.toggleEdit()">Edit This Poll</a>
-  <a href="" ng-click="vm.deletePoll()">Delete this Poll</a>
-</div>
+  <div ng-if="vm.currentUser && vm.currentUser.id === vm.poll.user.id">
+    <a href="" ng-click="vm.toggleEdit()">Edit This Poll</a>
+    <a href="" ng-click="vm.deletePoll()">Delete this Poll</a>
+  </div>
 
-<form ng-submit="vm.submitEdit()" ng-if="vm.showEdit">
-  <h5>Poll Options</h5>
-  <label>Allow multiple responses?:</label>
-  <input type="checkbox" name="poll" ng-model="vm.poll.select_multiple"><br>
-  <label>Make Results Public?:</label>
-  <input type="checkbox" name="poll" ng-model="vm.poll.public_results"><br>
-  <label>Uncheck to Close this poll:</label>
-  <input type="checkbox" name="poll" ng-model="vm.poll.open"><br>
-  <input type="submit" name="submit" value="Edit Poll Options">
-</form>
-<br>
+  <form ng-submit="vm.submitEdit()" ng-if="vm.showEdit">
+    <h5>Poll Options</h5>
+    <label>Allow multiple responses?:</label>
+    <input type="checkbox" name="poll" ng-model="vm.poll.select_multiple"><br>
+    <label>Make Results Public?:</label>
+    <input type="checkbox" name="poll" ng-model="vm.poll.public_results"><br>
+    <label>Uncheck to Close this poll:</label>
+    <input type="checkbox" name="poll" ng-model="vm.poll.open"><br>
+    <input type="submit" name="submit" value="Edit Poll Options">
+  </form>
+  <br>
 
-<div ng-if="vm.unavailable || !vm.poll.open">
-  <qp-poll-results poll="vm.poll"></qp-poll-results>
-</div>
+  <div ng-if="vm.unavailable || !vm.poll.open">
+    <qp-poll-results poll="vm.poll"></qp-poll-results>
+  </div>
 
-<div ng-if="!vm.unavailable && vm.poll.open">
-  <qp-poll-form poll="vm.poll"></qp-poll-form>
-</div>
+  <div ng-if="!vm.unavailable && vm.poll.open">
+    <qp-poll-form poll="vm.poll"></qp-poll-form>
+  </div>
+</div> 

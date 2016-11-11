@@ -8,5 +8,7 @@
 //= require AngularDevise
 //= require angular-messages
 
+//= require bootstrap
+
 //= require_tree .
 

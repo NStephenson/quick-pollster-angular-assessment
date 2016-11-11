@@ -1,9 +1,0 @@
-<%= @survey.name %>
-
-
-<form method="POST" action="<%= survey_add_results_path(@survey)%>">
-<% @survey.polls.each do |poll| %>
-  <%= render partial: "/polls/poll", locals: {poll: poll, survey: true} %>
-<% end %>
-    <input type="submit" name="submit">
-</form>

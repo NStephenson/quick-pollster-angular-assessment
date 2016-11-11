@@ -6,6 +6,6 @@
 
 <input type="text" ng-model="vm.search" ng-change="vm.refilter()">
 
-<div ng-repeat="poll in vm.filteredPolls track by poll.id">
+<div ng-repeat="poll in vm.filteredPolls track by poll.id" class="row">
   <qp-poll-card poll="poll"></qp-poll-card>
 </div>
