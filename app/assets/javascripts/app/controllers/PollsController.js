@@ -7,6 +7,8 @@ app.controller('PollsController', function PollsController(polls, $filter, Auth,
     ctrl.currentUser = user; 
   });
 
+  // Search tools
+
   ctrl.polls = polls.data;
 
   ctrl.setting = 'all';
@@ -14,7 +16,7 @@ app.controller('PollsController', function PollsController(polls, $filter, Auth,
   ctrl.search = '';
 
 
-  ctrl.refilter = function() {
+  ctrl.refilter = function(){
     var statusFilteredPolls = $filter('filterPollByResponseStatus')(ctrl.polls, ctrl.currentUser, ctrl.setting);
     ctrl.filteredPolls = $filter('filter')(statusFilteredPolls, ctrl.search);
   }
@@ -24,12 +26,17 @@ app.controller('PollsController', function PollsController(polls, $filter, Auth,
 
   // New Poll functions
 
-  ctrl.newPoll = {};
-  ctrl.newPoll.poll = {};
-  ctrl.newPoll.poll.responses_attributes = [ { text: '' }, { text: '' }, { text: '' }, { text: '' }, { text: '' }, { text: '' } ];
+  ctrl.poll = {responses_attributes: [
+    { text: '' }, 
+    { text: '' }, 
+    { text: '' }, 
+    { text: '' }, 
+    { text: '' }, 
+    { text: '' }
+  ]};
 
   ctrl.createNewPoll = function(){
-    PollsService.newPoll(ctrl.newPoll).then(function(poll){
+    PollsService.newPoll(ctrl.poll).then(function(poll){
       $state.go('poll', {id: poll.data.id})
     });
   }
