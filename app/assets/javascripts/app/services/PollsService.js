@@ -1,4 +1,4 @@
-app.service('PollsService', function PollsService($http){
+app.service('PollsService', ['$http', function PollsService($http){
 
   this.getPolls = function(){
     return $http.get('/polls.json');
@@ -28,4 +28,4 @@ app.service('PollsService', function PollsService($http){
     return $http.get('/users/' + user.id + '/polls.json');
   }
 
-});
+}]);
