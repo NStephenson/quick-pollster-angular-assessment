@@ -22,7 +22,7 @@ app.directive('qpPollCard', function(){
       });
 
       ctrl.deletePoll = function(){
-        PollsService.deletePoll(ctrl.poll).then(function(){
+        PollsService.deletePoll(ctrl.poll).then(function(a,b,c){
           $state.go($state.current, {}, {reload: true});
         }, function(error){
           alert(error.data.text);

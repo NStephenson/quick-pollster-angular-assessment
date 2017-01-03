@@ -5,7 +5,6 @@ app.service('PollsService', function PollsService($http){
   } 
 
   this.newPoll = function(poll){
-    debugger;
     return $http.post('/polls.json', {poll});
   } 
 

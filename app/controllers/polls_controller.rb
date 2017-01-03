@@ -87,7 +87,8 @@ class PollsController < ApplicationController
       @poll.votes.each { |vote| vote.delete }
       @poll.responses.each { |response| response.delete }
       @poll.delete
-      head 204
+      binding.pry
+      render json: {status: 204, poll_id: @poll.id}
     else
       head :unauthorized
     end
