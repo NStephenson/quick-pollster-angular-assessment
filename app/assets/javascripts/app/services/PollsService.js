@@ -5,7 +5,7 @@ app.service('PollsService', function PollsService($http){
   } 
 
   this.newPoll = function(poll){
-    return $http.post('/polls.json', {poll});
+    return $http.post('/polls.json', Object.create(poll));
   } 
 
   this.getPoll = function(id){
