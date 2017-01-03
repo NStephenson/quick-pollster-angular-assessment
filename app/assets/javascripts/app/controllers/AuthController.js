@@ -17,3 +17,5 @@ app.controller('AuthController', function AuthController($state, Auth){
     });
   }
 });
+
+AuthController.$inject = ['$state', 'Auth'];

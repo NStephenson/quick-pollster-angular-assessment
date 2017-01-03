@@ -42,3 +42,6 @@ app.controller('PollsController', function PollsController(polls, $filter, Auth,
   }
 
 });
+
+PollsController.$inject = ['polls', '$filter', 'Auth', 'PollsService', '$state'];
+

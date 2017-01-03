@@ -8,3 +8,5 @@ app.controller('UsersController', function UsersController(user, PollsService){
   });
 
 });
+
+UsersController.$inject = ['user', 'PollsService'];

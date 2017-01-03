@@ -9,3 +9,6 @@ app.controller('PollController', function PollController(poll, Auth){
 
 
 });
+
+PollController.$inject = ['poll', 'Auth'];
+
