@@ -1,4 +1,4 @@
-app.controller('UsersController', function UsersController(user, PollsService){
+app.controller('UsersController', ['user', 'PollsService', function UsersController(user, PollsService){
   var ctrl = this;
 
   ctrl.user = user.data;
@@ -7,6 +7,4 @@ app.controller('UsersController', function UsersController(user, PollsService){
     ctrl.publishedPolls = polls.data;
   });
 
-});
-
-UsersController.$inject = ['user', 'PollsService'];
+}]);
