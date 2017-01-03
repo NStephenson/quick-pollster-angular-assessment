@@ -1,4 +1,4 @@
-app.controller('AuthController', function AuthController($state, Auth){
+app.controller('AuthController', ['$state', 'Auth', function AuthController($state, Auth){
   var ctrl = this;
  
   ctrl.login = function(){
@@ -16,6 +16,4 @@ app.controller('AuthController', function AuthController($state, Auth){
       console.log(error);
     });
   }
-});
-
-AuthController.$inject = ['$state', 'Auth'];
+}]);
