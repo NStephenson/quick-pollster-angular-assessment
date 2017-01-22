@@ -4,7 +4,7 @@ var app = angular.module('app', ['ui.router', 'templates', 'Devise', 'ngMessages
   //     $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
   //   }
   // ])
-app.config(function($stateProvider, $urlRouterProvider){
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
     $stateProvider
     .state('welcome', {
       url: '/',
@@ -108,7 +108,7 @@ app.config(function($stateProvider, $urlRouterProvider){
     // });
 
     $urlRouterProvider.otherwise('/');
-  });
+  }]);
 
 app.run(function($rootScope, $state, Auth){
 
