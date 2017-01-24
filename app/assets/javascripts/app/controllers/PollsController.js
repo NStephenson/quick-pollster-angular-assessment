@@ -1,4 +1,5 @@
-app.controller('PollsController', ['polls', '$filter', 'Auth', 'PollsService', '$state', function PollsController(polls, $filter, Auth, PollsService, $state){
+app.controller('PollsController', ['polls', '$filter', 'Auth', 'PollsService', '$state', 
+function PollsController(polls, $filter, Auth, PollsService, $state){
   var ctrl = this;
 
   ctrl.filterOptions = ['all', 'responded', 'unresponded'];

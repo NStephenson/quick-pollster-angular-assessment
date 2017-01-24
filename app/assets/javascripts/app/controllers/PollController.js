@@ -1,4 +1,5 @@
-app.controller('PollController', ['poll', 'Auth', function PollController(poll, Auth){
+app.controller('PollController', ['poll', 'Auth', 
+function PollController(poll, Auth){
   var ctrl = this;
 
   Auth.currentUser().then(function(user) { 

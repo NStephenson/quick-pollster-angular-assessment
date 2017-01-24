@@ -1,4 +1,5 @@
-app.controller('UsersController', ['user', 'PollsService', function UsersController(user, PollsService){
+app.controller('UsersController', ['user', 'PollsService', 
+function UsersController(user, PollsService){
   var ctrl = this;
 
   ctrl.user = user.data;

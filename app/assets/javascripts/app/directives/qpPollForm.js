@@ -3,14 +3,15 @@ app.directive('qpPollForm', function QpPoll(){
     restrict: 'E',
     templateUrl: 'app/templates/polls/poll_form.html',
     scope: {},
-    controller: function(PollsService, Auth){
+    controller: ['PollsService', 'Auth', 
+    function(PollsService, Auth){
       var ctrl = this;
 
       Auth.currentUser().then(function(user) { 
         ctrl.currentUser = user; 
       });
 
-    },
+    }],
     controllerAs: 'vm',
     bindToController: {poll: '='},
     require: '^qpPollCard',

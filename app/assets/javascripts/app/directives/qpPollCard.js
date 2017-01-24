@@ -3,7 +3,8 @@ app.directive('qpPollCard', function(){
     restrict: 'E',
     templateUrl: 'app/templates/polls/poll_card.html',
     scope: {},
-    controller: function(PollsService, Auth, $scope, $state){
+    controller: ['PollsService', 'Auth', '$scope', '$state', 
+    function(PollsService, Auth, $scope, $state){
       var ctrl = this;
 
       ctrl.unavailable;
@@ -75,7 +76,7 @@ app.directive('qpPollCard', function(){
         console.log();
       }
 
-    },
+    }],
     controllerAs: 'vm',
     bindToController: {poll: '='}
   }

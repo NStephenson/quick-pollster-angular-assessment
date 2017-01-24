@@ -1,4 +1,5 @@
-app.controller('AuthController', ['$state', 'Auth', function AuthController($state, Auth){
+app.controller('AuthController', ['$state', 'Auth', 
+function AuthController($state, Auth){
   var ctrl = this;
  
   ctrl.login = function(){

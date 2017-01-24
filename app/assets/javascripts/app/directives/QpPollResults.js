@@ -4,14 +4,14 @@ app.directive('qpPollResults', function(){
     restrict: 'E',
     templateUrl: 'app/templates/polls/poll_display.html',
     scope: {},
-    controller: function(Auth){
+    controller: ['Auth', function(Auth){
       var ctrl = this;
 
       Auth.currentUser().then(function(user) { 
         ctrl.currentUser = user; 
       });
 
-    },
+    }],
     controllerAs: 'vm',
     bindToController: {poll: '='}
   }

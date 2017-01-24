@@ -110,7 +110,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     $urlRouterProvider.otherwise('/');
   }]);
 
-app.run(function($rootScope, $state, Auth){
+app.run(['$rootScope', '$state', 'Auth', 
+function($rootScope, $state, Auth){
 
   $rootScope.$on('$stateChangeStart', function(e, to){
     Auth.currentUser().then(function(user){
@@ -127,6 +128,6 @@ app.run(function($rootScope, $state, Auth){
     });
   });
   
-});
+}]);
 
 

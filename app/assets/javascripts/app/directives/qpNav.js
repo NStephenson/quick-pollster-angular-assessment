@@ -2,7 +2,8 @@ app.directive('qpNav', function(){
   return {
     restrict: 'E',
     templateUrl: 'app/templates/nav/navbar.html',
-    controller: function(Auth, $state, $scope){
+    controller: ['Auth', '$state', '$scope', 
+    function(Auth, $state, $scope){
       var ctrl = this;
 
       $scope.$on('devise:login', function(e, user){
@@ -26,7 +27,7 @@ app.directive('qpNav', function(){
         });
       }
 
-    },
+    }],
     controllerAs: 'vm'
   }
 });
