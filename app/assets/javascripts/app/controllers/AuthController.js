@@ -10,7 +10,8 @@ function AuthController($state, Auth){
 
   ctrl.signUp = function(){
     console.log(ctrl.creds);
-    Auth.register(ctrl.creds).then(function(){
+    Auth.register(ctrl.creds).then(function(a,b,c){
+      debugger;
       $state.go('polls');
       console.log(user);
     }, function(error){
