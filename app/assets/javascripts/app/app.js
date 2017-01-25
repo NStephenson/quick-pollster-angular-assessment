@@ -37,9 +37,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       templateUrl: 'app/templates/polls/polls_index.html',
       data: { authRequired: true },
       resolve: {
-        polls: function(PollsService){
+        polls: ['PollsService', function(PollsService){
           return PollsService.getPolls();
-        }
+        }]
       }
     })
     // .state('myPolls', {
@@ -58,9 +58,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       controller: 'PollController as vm',
       templateUrl: 'app/templates/polls/poll_show.html',
       resolve: {
-        poll: function(PollsService, $stateParams){
+        poll: ['PollsService', '$stateParams', function(PollsService, $stateParams){
           return PollsService.getPoll($stateParams.id);
-        }
+        }]
       }
     })
     .state('login',{
@@ -91,9 +91,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       templateUrl: 'app/templates/users/user.html',
       data: { authRequired: true },
       resolve: {
-        user: function(UserService, $stateParams){
+        user: ['UserService', '$stateParams', function(UserService, $stateParams){
           return UserService.getUser($stateParams.id);
-        }
+        }]
       }
     });
     // .state('user.all', {
