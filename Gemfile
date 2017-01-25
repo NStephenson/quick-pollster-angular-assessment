@@ -30,6 +30,7 @@ gem 'active_model_serializers'
 gem 'sprockets', '2.12.3'
 gem 'angular-rails-templates'
 gem 'pry'
+gem 'rails_12factor', group: :production
 
 
 # Use ActiveModel has_secure_password
