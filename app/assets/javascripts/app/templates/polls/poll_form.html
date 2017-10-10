@@ -1,11 +1,13 @@
 <form ng-submit="submitResponse(vm.response)">
-  <div ng-repeat="response in vm.poll.responses track by response.id" ng-switch on="vm.poll.select_multiple">
-
+  <div ng-repeat="response in vm.poll.responses track by response.id" ng-switch on="vm.poll.select_multiple" class="btn-group" data-toggle="buttons">
+  <label class="btn btn-primary">
     <input ng-switch-when="true" type="checkbox" name="{{respose.text}}" value="{{response.text}}" ng-model="vm.response.response.id[response.id]">
 
     <input ng-switch-when="false" type="radio" name="responses" value="{{response.id}}" ng-model="vm.response.response.id"> 
     {{response.text}}
+  </label>
   </div> 
+  <br>
   <input type="submit" id="submit" value="Submit" ng-if="!vm.showEdit"/>
   
 </form>

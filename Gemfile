@@ -31,6 +31,7 @@ gem 'sprockets', '2.12.3'
 gem 'angular-rails-templates'
 gem 'pry'
 gem 'rails_12factor', group: :production
+gem 'rack-cors'
 
 
 # Use ActiveModel has_secure_password
