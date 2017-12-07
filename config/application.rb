@@ -28,7 +28,10 @@ module QuickPollster
       allow do
         if ENV["RAILS_ENV"] == 'development'
             origins 'http://localhost:4200'
-            resource '*', :headers => :any, :methods => [:get, :post, :options]
+            resource '*', :headers => :any,
+            :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'], 
+            :methods => [:get, :post, :options, :delete, :put]
+
         end
       end
     end

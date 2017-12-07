@@ -32,6 +32,7 @@ gem 'angular-rails-templates'
 gem 'pry'
 gem 'rails_12factor', group: :production
 gem 'rack-cors'
+gem 'devise_token_auth'
 
 
 # Use ActiveModel has_secure_password

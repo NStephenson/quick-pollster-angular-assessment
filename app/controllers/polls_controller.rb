@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  before_action :authenticate_user!, only: [ :index, :edit, :update, :destroy ]
+  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy ]
   before_action :find_poll, only: [ :edit, :update, :add_results, :destroy]
 
   def index
@@ -34,7 +34,7 @@ class PollsController < ApplicationController
 
   def create
     @poll = Poll.new(new_poll_params)
-    @poll.user = current_user if signed_in?
+    @poll.user = current_user if user_signed_in?
     if @poll.save
       render json: @poll, status: 201
     else
@@ -53,32 +53,20 @@ class PollsController < ApplicationController
   end
 
   def add_results
-    response_value = params.require('response')[:id]
-    if response_value.class == ActionController::Parameters
-      response_value.each do |k,v|
-        response = Response.find(k.to_i)
-        if response.poll == @poll #put this logic in a validate response method?
-          response.selected += 1
-          response.save
-          if signed_in? 
-            current_user.responses << response 
-          else
-            #add cookie
-          end 
-        end
-      end
-    else
-      response = Response.find(response_value.to_i)
+    responses = poll_response_params[:response_ids]
+    if !@poll.select_multiple && responses.length > 1
+      # Throw an error here
+    end
+
+    responses.each do |id|
+      response = Response.find(id)
       if response.poll == @poll #put this logic in a validate response method?
         response.selected += 1
         response.save
-        if signed_in?
-          current_user.responses << response
-        else
-          #add cookie
-        end 
+        current_user.responses << response if user_signed_in? 
       end
     end
+
     render json: @poll
   end
 
@@ -101,6 +89,10 @@ class PollsController < ApplicationController
 
   def edit_poll_params
     params.require(:poll).permit(:limit_to_survey, :select_multiple, :open, :public_results, :published)
+  end
+
+  def poll_response_params
+    params.require(:poll).permit(response_ids: [])
   end
 
   def find_poll
