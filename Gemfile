@@ -24,7 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'dotenv-rails', :require => 'dotenv/rails-now'
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~> 4.0'
 gem 'faker'
 gem 'active_model_serializers'
 gem 'sprockets', '2.12.3'

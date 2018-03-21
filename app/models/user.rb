@@ -36,10 +36,34 @@ class User < ActiveRecord::Base
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
+      ##### The username should be set by the user and ideally a user would not be able to be created without a validated username ##
       user.username = auth.info.name
     end
   end
 
+  ###### Temporary code to bypasss issue with Devise token auth. Needs long term solution #####################################
+
+  def nickname
+    username
+  end
+
+  def name
+  end
+
+  def name=(n)
+  end
+
+  def nickname=(name)
+    self.username = "Terry"
+  end
+
+  def image=(n)
+  end
+
+  def image
+  end
+
+################################################ß
 
   def polls_responded
     responses.map { |response| response.poll }.uniq
