@@ -45,7 +45,7 @@ class PollsController < ApplicationController
   def update
     @poll.update(edit_poll_params)
     if @poll.save
-      render json: @polls
+      render json: @poll
     else
       flash[:error] = "Somehow, you managed to fuck up. Congrats."
       render action: 'edit'
